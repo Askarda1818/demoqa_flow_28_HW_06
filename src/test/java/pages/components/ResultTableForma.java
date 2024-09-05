@@ -14,10 +14,9 @@ public class ResultTableForma {
 
             finalResulWindow = $(".modal-dailog");
 
-
     public void ResultTable(String studentName, String studentEmail, String gender, String mobile, String dateOfBirth,
-                               String subjects, String hobbies, String picture,
-                               String address, String stateAndCity) {
+                            String subjects, String hobbies, String picture,
+                            String address, String stateAndCity) {
         resultTable.$(byText("Student Name")).parent().shouldHave(text(studentName));
         resultTable.$(byText("Student Email")).parent().shouldHave(text(studentEmail));
         resultTable.$(byText("Gender")).parent().shouldHave(text(gender));
@@ -31,17 +30,17 @@ public class ResultTableForma {
     }
 
     //  метод для проверки вызова успешного  pop-up
-    public ResultTableForma successfulModalDialog(){
+    public ResultTableForma successfulModalDialog() {
         successfulPopUp
                 .shouldBe(visible)
                 .shouldHave(text("Thanks for submitting the form"));
-        return  this;
+        return this;
     }
 
-    public ResultTableForma checkResultFinalTable(String key, String value){
-        resultTable.$(byText(key)).parent().shouldHave(text(value));
-        return  this;
-    }
+    /* public ResultTableForma checkResultFinalTable(String key, String value){
+         resultTable.$(byText(key)).parent().shouldHave(text(value));
+         return  this;
+     }*/
     public ResultTableForma notResultWindow() {
         finalResulWindow.shouldNot(appear);
         return this;
@@ -56,9 +55,6 @@ public class ResultTableForma {
         resultTable.$(byText("Student Name")).parent().shouldHave(text(studentName));
         resultTable.$(byText("Gender")).parent().shouldHave(text(gender));
         resultTable.$(byText("Mobile")).parent().shouldHave(text(mobile));
-
     }
-
-
 
 }

@@ -1,5 +1,6 @@
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import pages.RegistrarionPage;
@@ -25,9 +26,15 @@ public class RegistrationWithPageObjectTests {
     static  void afterAll(){
         closeWebDriver();
     }
+
+    @AfterEach
+    static  void afterEach(){
+        closeWebDriver();
+    }
     @Test
     void practiceFormTest() {
        registrarionPage.openPage()
+               .removeBanner()
                .setFirstName("Aslan")
                .setlastName("Kardanov")
                .setUserEmail("Askarda@test.com")
@@ -41,8 +48,7 @@ public class RegistrationWithPageObjectTests {
                .setState("NCR")
                .setCity("Noida")
                .setSubmitClick();
-       //для себя
-        sleep(5000);
+
         resultTableForma.successfulModalDialog()
                 .ResultTable("Aslan Kardanov","Askarda@test.com","Other","Mobile 8928000000",
                 "24 September,2024","Commerce","Sports","Toka.png","Kabardino_Balkaria, Baksan",
@@ -66,8 +72,7 @@ public class RegistrationWithPageObjectTests {
                 .setGenterWrapper("Other")
                 .setUserNumber("89280000000")
                 .setSubmitClick();
-        //для себя
-        sleep(5000);
+
         resultTableForma.successfulModalDialog()
                 .ResultTableMinimalAmountData("Aslan Kardanov","Other","Mobile 8928000000");
     }

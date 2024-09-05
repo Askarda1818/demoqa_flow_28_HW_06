@@ -34,6 +34,9 @@ public class RegistrarionPage {
     public RegistrarionPage openPage(){
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+       return this;
+    }
+    public RegistrarionPage removeBanner(){
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return  this;
@@ -76,8 +79,7 @@ public class RegistrarionPage {
 
     // метод для загрузки файла
     public RegistrarionPage setUploadPicture(String pathname){
-        File file = new File(pathname);
-        userUploadPictureInput.uploadFile(file);
+        userUploadPictureInput.uploadFromClasspath(pathname);
         return  this;
     }
     //метод для ввода адреса региона
@@ -105,10 +107,10 @@ public class RegistrarionPage {
         return  this;
     }
 
-    public  RegistrarionPage checkResult(String key, String value){
+   /* public  RegistrarionPage checkResult(String key, String value){
         chekResultTable.$(byText(key)).parent().shouldHave(text(value));
         return  this;
-    }
+    }*/
 
 
 }
