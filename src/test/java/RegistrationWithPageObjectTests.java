@@ -27,10 +27,6 @@ public class RegistrationWithPageObjectTests {
         closeWebDriver();
     }
 
-    @AfterEach
-    static  void afterEach(){
-        closeWebDriver();
-    }
     @Test
     void practiceFormTest() {
        registrarionPage.openPage()
@@ -43,7 +39,7 @@ public class RegistrationWithPageObjectTests {
                .setDateOfBirth("24","September","2024")
                .setSubjects("Commerce")
                .setHobbiesWrapper("Sports")
-               .setUploadPicture("src/test/resources/Toka.png")
+               .setUploadPicture("Toka.png")
                .setCurrentAddress("Kabardino_Balkaria, Baksan")
                .setState("NCR")
                .setCity("Noida")
@@ -59,6 +55,7 @@ public class RegistrationWithPageObjectTests {
     @Test
     void negativepracticeFormTest(){
         registrarionPage.openPage()
+                .scrollToElement()
                 .setSubmitClick();
         resultTableForma.notResultWindow();
     }
@@ -71,10 +68,16 @@ public class RegistrationWithPageObjectTests {
                 .setlastName("Kardanov")
                 .setGenterWrapper("Other")
                 .setUserNumber("89280000000")
+                .scrollToElement()
                 .setSubmitClick();
 
         resultTableForma.successfulModalDialog()
                 .ResultTableMinimalAmountData("Aslan Kardanov","Other","Mobile 8928000000");
+    }
+
+    @AfterEach
+    public   void afterEach(){
+        closeWebDriver();
     }
 
 

@@ -106,6 +106,11 @@ public class RegistrarionPage {
         submitClick.click();
         return  this;
     }
+    //скролл до нужно элемента
+    public RegistrarionPage scrollToElement(){
+        submitClick.scrollTo();
+        return this;
+    }
 
    /* public  RegistrarionPage checkResult(String key, String value){
         chekResultTable.$(byText(key)).parent().shouldHave(text(value));
