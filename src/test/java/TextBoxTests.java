@@ -1,10 +1,11 @@
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class TextBoxTests {
 
@@ -28,5 +29,13 @@ public class TextBoxTests {
         $("#output #email").shouldHave(text("Smit@mail.ru"));
         $("#output #currentAddress").shouldHave(text("Street Pushkina, 12/2"));
         $("#output #permanentAddress").shouldHave(text("Sity Baksan"));
+    }
+    @AfterAll
+    static  void afterAll(){
+        closeWebDriver();
+    }
+    @AfterEach
+    public   void afterEach(){
+        closeWebDriver();
     }
 }
